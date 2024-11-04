@@ -1,20 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import styles from './styles';
+const data = new Array(100)
+  .fill(null)
+  .map((value, index) => ({
+    key: index.toString(), value: `Item $(index)`
+  }));
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <FlatList
+        data={data}
+        renderItem={({item}) => <Text style={styles.item}>{item.value}</Text>}>
+      </FlatList> 
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
