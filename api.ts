@@ -10,7 +10,7 @@ function filterAndSort(data: string[], text: string, asc: boolean){
         );
 }
 
-export fucntion fetchItems(
+export function fetchItems(
     filter: string,
     asc: boolean
 ) : Promise<{json: () => Promise<{items: string[]}>}> {
