@@ -5,17 +5,27 @@ import ListControls from "./ListControls";
 
 type Props = {
     data: {key: string; value: string}[];
-    onFilter: (text: string) => void;
-    onSort: () => void;
-    asc: boolean;
+    fetchItems: () => Promise<void>;
+    refreshItems: () => Promise<void>;
+    isRefreshing: boolean;
+    // onFilter: (text: string) => void;
+    // onSort: () => void;
+    // asc: boolean;
 };
 
-export default function List({data, onFilter, onSort, asc} : Props) {
+export default function List({
+        data, 
+        fetchItems, 
+        refreshItems, 
+        isRefreshing} : Props) {
     return (
         <FlatList
             data={data}
-            ListHeaderComponent={<ListControls {...{onFilter, onSort, asc}}/> } 
+            // ListHeaderComponent={<ListControls {...{onFilter, onSort, asc}}/> } 
             renderItem={({item}) => <Text style={styles.item}>{item.value}</Text>}
+            onEndReached={fetchItems}
+            onRefresh={refreshItems}
+            refreshing={isRefreshing}
             />
     )
 }
