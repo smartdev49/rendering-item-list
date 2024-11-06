@@ -25,7 +25,7 @@ export default function ListContainer() {
     // const [asc, setAsc] = useState(true);
     // const [filter, setFilter] = useState("");
     // const [data, setData]= useState<MappedList>([]);   
-    const [data, setData] = useState<{key: String; value: String}[]>([]);
+    const [data, setData] = useState<{key: string; value: string}[]>([]);
     const [isRefreshing, setIsRefreshing] = useState(false);
     function fetchItems() {
         return api
